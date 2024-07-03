@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+
+.cv-section {
+  background-color: aquamarine;
+  border-radius: 15px;
+  padding: 15px;
+  border-style: dotted;
+}

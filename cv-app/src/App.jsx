@@ -26,8 +26,6 @@ export default function App() {
   const [draftedData, setDraftedData] = useState(publishedData);
   const [isEditing, setIsEditing] = useState(false);
 
-    // multiple updates using the latest state via
-    // an updater function
   function handleInputChange(e) {
     const targetId = e.target.dataset.id;
     const targetPropName = e.target.name;
@@ -40,13 +38,8 @@ export default function App() {
         return data;
       }
     }));
-
-    // setDraftedData(newObject);
-
   } 
   
-
-  // updates publishedData state with draft
   function handleSaveInfo() {
     setPublishedData(draftedData); 
     setIsEditing(false);  
@@ -57,9 +50,9 @@ export default function App() {
     setDraftedData(publishedData)
   }
 
-
   return (
   <>
+  {/* if currently editing, display form */}
   { isEditing ? (
     <>
     <div className='generalform'>
@@ -80,20 +73,48 @@ export default function App() {
         name="email"
         value={draftedData[0].email}
         onChange={handleInputChange} />
-        <br />
+      <br />
+      <label htmlFor="school">School:</label>
+      <input 
+        id="school"
+        data-id="0"
+        name="school"
+        value={draftedData[0].school}
+        onChange={handleInputChange}
+      />
+      <br />
+      <label htmlFor="major">Major:</label>
+      <input
+        id="major"
+        data-id="0"
+        name="major"
+        value={draftedData[0].major}
+        onChange={handleInputChange}
+        />
+      <br />
+      <label htmlFor="graduation">Graduation:</label>
+      <input
+        id="graduation"
+        data-id="0"
+        name="graduation"
+        value={draftedData[0].graduation}
+        onChange={handleInputChange}
+        />
+      <br />
+      <br />
+      <br />
       <button onClick={handleSaveInfo}>Save</button>
       <button onClick={handleCancel}>Cancel</button>
     </div>
 </>
   ) : (
+    // else, just show an "edit" button
     <>
     <button onClick={() => setIsEditing(true)}>Edit CV</button>
     </>
   )}
 
-      {/* pass published data to display component as prop */}
       <DisplayResume publishedData={publishedData} />
-
     </>
   )
 }
