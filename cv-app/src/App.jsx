@@ -2,6 +2,14 @@ import './App.css';
 import { useState } from 'react';
 import DisplayResume from './DisplayResume';
 
+// TODOs:
+// - add experiences
+// - edit and delete nested experience objects
+// - add localStorage functionality?
+// - style components (either styled components or vanilla css.)
+// - ** optional: play with sass/tailwind or smthn
+// - style hr thickness with height
+
 const initialData = [
   {
     id: 0,
@@ -13,12 +21,25 @@ const initialData = [
   },
   {
     id: 1,
-    company: 'Company Name Here',
-    position: 'Your Position Title',
-    date: 'Dates Worked',
-    responsibilities: 'Your Responsibilities Here',
+    company: 'Test Comp 1',
+    position: 'Test Position 1',
+    date: 'Jan 1 1900',
+    responsibilities: [
+      // update nested array data with splice method?
+      "Test Responsibliity 1",
+      "Test Responsiblity 2",
+    ],
+  },
+  {
+    id: 2,
+    company: 'Test Comp 2',
+    position: 'Your Position Title 2',
+    date: 'Jan 2 2000',
+    responsibilities: [
+      "Test Responsibliity 3",
+      "Test Responsiblity 4",
+    ],
   }
-  
 ];
 
 export default function App() {
@@ -101,8 +122,19 @@ export default function App() {
         onChange={handleInputChange}
         />
       <br />
+        <h3>Experience</h3>
+        {/* map over experience objects and render form for each with filled vals */}
+
+
+
+
+
+
+
+
       <br />
       <br />
+
       <button onClick={handleSaveInfo}>Save</button>
       <button onClick={handleCancel}>Cancel</button>
     </div>
@@ -111,9 +143,11 @@ export default function App() {
     // else, just show an "edit" button
     <>
     <button onClick={() => setIsEditing(true)}>Edit CV</button>
+    <br />
+
     </>
   )}
-
+      <br />
       <DisplayResume publishedData={publishedData} />
     </>
   )
